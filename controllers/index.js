@@ -1,31 +1,31 @@
 const models = require("../database/models");
 
-const createUser = async (req, res) => {
+const createPhoto = async (req, res) => {
         try {
-        const user = await models.User.create(req.body);
+        const photo = await models.Photo.create(req.body);
         return res.status(201).json({
-        user
+        photo
         });
 } catch (error) {
         return res.status(500).json({ error: error.message });
 }
 };
 
-const getAllUsers = async (req, res) => {
-        console.log('getting users');
+const getAllPhotos = async (req, res) => {
+        console.log('getting photos');
         try {
-        const users = await models.User.findAll({
+        const photos = await models.Photo.findAll({
         include: [
         ]
         });
-        return res.status(200).json({ users });
+        return res.status(200).json({ photos });
 } catch (error) {
         return res.status(500).send(error.message);
         }
 };
 
 module.exports = {
-        createUser,
-        getAllUsers
+        createPhoto,
+        getAllPhotos
 };
 
